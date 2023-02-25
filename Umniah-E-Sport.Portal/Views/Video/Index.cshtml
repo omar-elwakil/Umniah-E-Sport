@@ -1,0 +1,115 @@
+﻿@model IEnumerable<GetAllVideosVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+
+}
+
+@{
+    Layout = "_Layout";
+}
+@*<div class="col-12 mt-4 mb-2 d-flex align-items-center justify-content-between">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a asp-controller="Video" asp-action="Index"><img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" /></a>
+        Videos
+    </div>
+    <div class="">
+        <img class="mr-5" src="./images/icons/filter.svg" alt="" />
+        <img class="" src="./images/icons/search.svg" alt="" />
+    </div>
+</div>*@
+
+<main class="main-container row no-gutters">
+    @foreach (var card in Model)
+    {
+        
+    
+    <!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+         <a asp-action="Details" asp-controller="Video" asp-route-videoId="@card.Id">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+             <img class="w-100" src="~/Path/Videos/Images/@card.ImageName" height="163" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">@(isEn ? card.Title_EN : card.Title_AR)</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+              @(isEn ? card.Description_EN : card.Description_AR)
+            </div>
+        </div>
+        </a>
+    </div>
+    }
+    <!-- end repeatable div -->
+    @*<!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+                <img class="w-100" src="./images/game3.png" height="143" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">PUBG Mobile Video</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts.
+            </div>
+        </div>
+    </div>
+    <!-- end repeatable div -->
+    <!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+                <img class="w-100" src="./images/game3.png" height="143" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">PUBG Mobile Video</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts.
+            </div>
+        </div>
+    </div>
+    <!-- end repeatable div -->
+    <!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+                <img class="w-100" src="./images/game3.png" height="143" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">PUBG Mobile Video</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts.
+            </div>
+        </div>
+    </div>
+    <!-- end repeatable div -->
+    <!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+                <img class="w-100" src="./images/game3.png" height="143" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">PUBG Mobile Video</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts.
+            </div>
+        </div>
+    </div>
+    <!-- end repeatable div -->
+    <!-- start repeatable div -->
+    <div class="row col-12 p-0 no-gutters bg-secondary p-3 justify-content-center mr-3">
+        <div class="col-12 d-flex flex-column">
+            <div class="game-poster">
+                <img class="w-100" src="./images/game3.png" height="143" />
+            </div>
+            <div class="game-title ff-vf-bold fs-14 mt-3">PUBG Mobile Video</div>
+            <div class="fs-16 h-3 mt-2 white-spc-normal">
+                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Far far away, behind the word mountains, far
+                from the countries Vokalia and Consonantia, there live the blind texts.
+            </div>
+        </div>
+    </div>
+    <!-- end repeatable div -->*@
+</main>

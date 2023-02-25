@@ -1,0 +1,199 @@
+﻿@model Umniah_E_Sport.Tool.Models.CreateTournamentCommand
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CreateTournamentCommand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Organizer_EN" class="control-label"></label>
+                <input asp-for="Organizer_EN" class="form-control" />
+                <span asp-validation-for="Organizer_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Organizer_AR" class="control-label"></label>
+                <input asp-for="Organizer_AR" class="form-control" />
+                <span asp-validation-for="Organizer_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_EN" class="control-label"></label>
+                <input asp-for="Title_EN" class="form-control" />
+                <span asp-validation-for="Title_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_AR" class="control-label"></label>
+                <input asp-for="Title_AR" class="form-control" />
+                <span asp-validation-for="Title_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_EN" class="control-label"></label>
+                <input asp-for="Description_EN" class="form-control" />
+                <span asp-validation-for="Description_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_AR" class="control-label"></label>
+                <input asp-for="Description_AR" class="form-control" />
+                <span asp-validation-for="Description_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrizeAmount" class="control-label"></label>
+                <input asp-for="PrizeAmount" class="form-control" />
+                <span asp-validation-for="PrizeAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterationStartDate" class="control-label"></label>
+                <input asp-for="RegisterationStartDate" class="form-control" />
+                <span asp-validation-for="RegisterationStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterationEndDate" class="control-label"></label>
+                <input asp-for="RegisterationEndDate" class="form-control" />
+                <span asp-validation-for="RegisterationEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationTimeSpan" class="control-label"></label>
+                <input asp-for="DurationTimeSpan" class="form-control" />
+                <span asp-validation-for="DurationTimeSpan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubscriptionFee" class="control-label"></label>
+                <input asp-for="SubscriptionFee" class="form-control" />
+                <span asp-validation-for="SubscriptionFee" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="ImageName" class="control-label"></label>
+                <input asp-for="ImageName" class="form-control" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile" class="control-label">Image : </label>
+                <input id="imageFile" name="imageFile" class="form-control" type="file" />
+                <span for="imageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="BannerName" class="control-label"></label>
+                <input asp-for="BannerName" class="form-control" />
+                <span asp-validation-for="BannerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="bannerFile" class="control-label">Banner : </label>
+                <input id="bannerFile" name="bannerFile" class="form-control" type="file" />
+                <span for="bannerFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="@Model.GameId" class="control-label"></label>
+                <select asp-for="@Model.GameId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.Games,"Id", "Title_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.GameId" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="@Model.LocationId" class="control-label"></label>
+                <select asp-for="@Model.LocationId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.Locations,"Id", "Text_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.LocationId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="@Model.TournamentTypeId" class="control-label"></label>
+                <select asp-for="@Model.TournamentTypeId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.TournamentTypes,"Id", "Text_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.TournamentTypeId" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label asp-for="@Model.ArenaId" class="control-label"></label>
+                <select asp-for="@Model.ArenaId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.Arenas,"Id", "Name_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.ArenaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="IsFeatured" class="control-label"></label>
+                <input asp-for="IsFeatured" class="form-control" />
+                <span asp-validation-for="IsFeatured" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="FeaturedReplaced" class="control-label">Featured : </label>
+                <input id="FeaturedReplaced" name="FeaturedReplaced" for="FeaturedReplaced" class="form-control" type="checkbox" value="true" />
+                <span for="FeaturedReplaced" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DiscordLink" class="control-label"></label>
+                <input asp-for="DiscordLink" class="form-control" />
+                <span asp-validation-for="DiscordLink" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

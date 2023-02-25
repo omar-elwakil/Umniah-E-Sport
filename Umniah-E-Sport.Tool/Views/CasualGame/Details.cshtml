@@ -1,0 +1,90 @@
+﻿@model Umniah_E_Sport.Tool.Models.GetCasualGameByIdVm
+
+<div>
+    <h4>GetCasualGameByIdVm</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title_EN)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title_EN)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title_AR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title_AR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description_EN)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description_EN)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description_AR)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description_AR)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GameLink)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GameLink)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BannerImageName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BannerImageName)
+            <div>
+                <img src="~/Path/CasualGames/Banners/@Model.BannerImageName" />
+            </div>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ThumbnailImageName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThumbnailImageName)
+             <div>
+                <img src="~/Path/CasualGames/Thumbnails/@Model.ThumbnailImageName" />
+            </div>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FileType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FileType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsFreatured)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsFreatured)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProvidingBy)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProvidingBy)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CasualCategoryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CasualCategoryId)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }) |
+    <a asp-action="Index">Back to List</a>
+</div>

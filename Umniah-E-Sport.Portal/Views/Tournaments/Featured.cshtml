@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Umniah_E_Sport.Portal.Models.GetFeaturedTournamentsVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_Layout";
+}
+
+<div id="featured-carousel" class="carousel slide pb-5" data-ride="carousel">
+    <ol class="carousel-indicators align-items-center m-0">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            if (i == 0)
+            {
+                <li data-target="#featured-carousel" data-slide-to="@i" class="indicators active"></li>
+            }
+            else
+            {
+                <li class="indicators" data-target="#featured-carousel" data-slide-to="@i"></li>
+            }
+        }
+    </ol>
+    <div class="carousel-inner">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="carousel-item px-3 @((i == 0) ? "active" : "")">
+                <div class="featured-card d-flex flex-column">
+                    <div class="tournment-poster">
+                        <img class="w-100" src="~/images/tournments/tournment1.png" />
+                    </div>
+                    <div class="tournment-title fs-18 color-text-primary my-2">@(isEn ? Model.ElementAt(i).Title_EN : Model.ElementAt(i).Title_AR)</div>
+                    <div class="h-2 color-text-primary">@(isEn ? Model.ElementAt(i).Description_EN : Model.ElementAt(i).Description_AR)</div>
+
+                    <div class="row no-gutters justify-content-between mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="~/images/icons/game.svg" />
+                            <div class="ml-2 fs-16 d-inline color-text-primary">@(isEn ? Model.ElementAt(i).TournamentTypeText_EN : Model.ElementAt(i).TournamentTypeText_AR)</div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="~/images/icons/cup.svg" />
+                            <div class="ml-2 fs-16 d-inline color-text-secondary">@Model.ElementAt(i).PrizeAmount ILS</div>
+                        </div>
+                    </div>
+
+                    <div class="row no-gutters justify-content-between mt-3">
+                        <div class="d-flex align-items-center">
+                            <img src="~/images/icons/map.svg" />
+                            <div class="ml-2 fs-16 d-inline color-text-primary">@(isEn ? Model.ElementAt(i).LocationText_EN : Model.ElementAt(i).LocationText_AR)</div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="~/images/icons/clock.svg" />
+                            <div class="ml-2 fs-16 d-inline color-text-primary">@Model.ElementAt(i).StartDate.ToString("dd MMM yyyy, hh:mm tt")</div>
+                        </div>
+                    </div>
+                    <input type="button"
+                       value="@localizer["JoinTournament"]"
+                       onclick="location.href='@Url.Action("Details", "Tournaments",new {tournamentId = @Model.ElementAt(i).Id})'"
+                       class="mt-5 py-2 btn btn-block fs-18 text-white color-primary" />
+                    @*<button asp-action="Details" asp-controller="Tournaments" type="button" asp-route-tournamentId=@Model.ElementAt(i).Id class="mt-5 py-2 btn btn-block fs-18 text-white color-primary">Join tournament</button>*@
+                </div>
+            </div>
+        }
+    </div>
+    <div class="carousel-inner">
+    </div>
+    <a asp-controller="Tournaments" asp-action="Index"
+       class="d-flex justify-content-center ff-vf-reg fs-18 text-primary text-center mt-4 px-3">
+        @localizer["BrowseAllTournaments"]
+        <img class="rtl-svg mx-2" src="~/images/icons/rightarrow-r.svg" />
+    </a>
+</div>
+@*@section Script{
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script src="~/js/custom.js"></script>
+}*@
+

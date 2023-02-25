@@ -1,0 +1,69 @@
+﻿@model Umniah_E_Sport.Tool.Models.NewsCardDetailVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>NewsCardDetailVM</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GameId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GameId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImageName)
+            <div>
+                <img src="~/Path/News/Images/@Model.ImageName" />
+            </div>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title_EN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title_EN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title_AR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title_AR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description_EN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description_EN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description_AR)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description_AR)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }) |
+    <a asp-action="Index">Back to List</a>
+</div>

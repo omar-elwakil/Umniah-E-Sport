@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Umniah_E_Sport.Portal.Models.GetAllTournamentsVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+}
+
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="
+						col-12
+						row
+						no-gutters
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a onclick="goBack()">
+            <img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" />
+        </a>
+        Tournaments
+    </div>
+   @* <div class="">
+        <img class="mr-5" src="~/images/icons/filter.svg" alt="" />
+        <img class="searchIcon" src="~/images/icons/search.svg" alt="" />
+    </div>
+    <input type="text" class="active w-100 border-0 p-0 fs-18 ff-vf-bold col-12 mt-2 search-bar"></input>*@
+</div>
+
+<main class="main-container row no-gutters">
+    @foreach (var card in Model)
+    {
+        <!-- repeatable card -->
+        <a asp-controller="Tournaments" asp-action="Details" asp-route-tournamentId=@card.Id>
+            <div class="tornment-card searchable col-12 row no-gutters p-3 mb-1" style="background-color:#2B2F33">
+        <div class="col-4">
+         <img class="w-100 object-fit-cover" src="~/Path/Tournaments/Images/@card.ImageName" height="200" />
+        </div>
+        <div class="col-7 mx-auto">
+            <div class="fs-16">Umniah</div>
+            <div class=" title fs-18 ff-vf-bold line-1-1">
+              @(isEn ? card.Title_EN : card.Title_AR)
+              @(isEn ? card.Description_EN : card.Description_AR)
+            </div>
+                    <div class="fs-16 my-2" style="color:#E0E43C">
+                        <img class="mr-2" src="~/images/icons/Mask Group 22.svg" alt="" />@card.PrizeAmount @localizer["ILS"]
+            </div>
+                    <div class="fs-16 mt-1" style="color:#CFD8DC">
+                <img class="mr-2" src="~/images/icons/controller.svg" alt="" />
+                 @(isEn ? card.TournamentTypeText_EN : card.TournamentTypeText_AR)
+            </div>
+                    <div class="fs-16 mt-1" style="color:#CFD8DC">
+                <img class="mr-2" src="~/images/icons/time.svg" alt="" />
+                  @card.StartDate.ToString("dd MMM yyyy, hh:mm tt")
+            </div>
+                    <div class="fs-16 mt-1" style="color:#CFD8DC">
+             <img class="mr-2" src="~/images/icons/location.svg" alt="" />@(isEn ? card.LocationText_EN : card.LocationText_AR)
+            </div>
+        </div>
+    </div>
+    </a>
+    }
+    <!-- repeatable card -->
+    <div class="tornment-card searchable col-12 row no-gutters p-3 mb-1 " style="background-color:#2B2F33">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="~/images/game1.png" height="200" />
+        </div>
+        <div class="col-7 mx-auto">
+            <div class="fs-16" style="color:#CFD8DC">Umniah</div>
+            <div class=" title fs-18 ff-vf-bold line-1-1">
+                PUBG Mobile Tournament Season 01
+            </div>
+            <div class="fs-16  my-2" style="color:#E0E43C">
+                <img class="mr-2"src="~/images/icons/Mask Group 22.svg" alt="" /> 5,000 EGP
+            </div>
+            <div class="fs-16 mt-1" style="color:#CFD8DC">
+                <img class="mr-2" src="~/images/icons/controller.svg" alt="" />
+                Single player tournament
+            </div>
+            <div class="fs-16 mt-1" style="color:#CFD8DC">
+                <img class="mr-2" src="~/images/icons/time.svg" alt="" />15 May 2021,
+                07:00 PM
+            </div>
+            <div class="fs-16 mt-1" style="color:#CFD8DC">
+                <img class="mr-2" src="~/images/icons/location.svg" alt="" />Online
+            </div>
+        </div>
+    </div>
+
+    <!-- repeatable card -->
+   @* <div class="tornment-card searchable col-12 row no-gutters p-3 mb-1 bg-secondary">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="~/images/game1.png" height="200" />
+        </div>
+        <div class="col-7 mx-auto">
+            <div class="fs-16">Umniah Iraq</div>
+            <div class=" title fs-18 ff-vf-bold line-1-1">
+                PUBG Mobile Tournament Season 01
+            </div>
+            <div class="fs-16 text-secondary my-2">
+                <img class="mr-2" src="~/images/icons/cup.svg" alt="" /> 5,000 EGP
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/controller.svg" alt="" />
+                Single player tournament
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/time.svg" alt="" />15 May 2021,
+                07:00 PM
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/location.svg" alt="" />Online
+            </div>
+        </div>
+    </div>*@
+
+    <!-- repeatable card -->
+   @* <div class="tornment-card searchable col-12 row no-gutters p-3 mb-1 bg-secondary">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="~/images/game1.png" height="200" />
+        </div>
+        <div class="col-7 mx-auto">
+            <div class="fs-16">Umniah Iraq</div>
+            <div class=" title fs-18 ff-vf-bold line-1-1">
+                PUBG Mobile Tournament Season 01
+            </div>
+            <div class="fs-16 text-secondary my-2">
+                <img class="mr-2" src="~/images/icons/cup.svg" alt="" /> 5,000 EGP
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/controller.svg" alt="" />
+                Single player tournament
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/time.svg" alt="" />15 May 2021,
+                07:00 PM
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/location.svg" alt="" />Online
+            </div>
+        </div>
+    </div>*@
+
+    <!-- repeatable card -->
+   @* <div class="tornment-card searchable col-12 row no-gutters p-3 mb-1 bg-secondary">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="~/images/game1.png" height="200" />
+        </div>
+        <div class="col-7 mx-auto">
+            <div class="fs-16">Umniah Iraq</div>
+            <div class=" title fs-18 ff-vf-bold line-1-1">
+                PUBG Mobile Tournament Season 01
+            </div>
+            <div class="fs-16 text-secondary my-2">
+                <img class="mr-2" src="~/images/icons/cup.svg" alt="" /> 5,000 EGP
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/controller.svg" alt="" />
+                Single player tournament
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/time.svg" alt="" />15 May 2021,
+                07:00 PM
+            </div>
+            <div class="fs-16 mt-1">
+                <img class="mr-2" src="~/images/icons/location.svg" alt="" />Online
+            </div>
+        </div>
+    </div>*@
+</main>

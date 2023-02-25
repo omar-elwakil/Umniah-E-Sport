@@ -1,0 +1,112 @@
+﻿@model Umniah_E_Sport.Tool.Models.GetCasualGameByIdVm
+
+<h4>GetCasualGameByIdVm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_EN" class="control-label"></label>
+                <input asp-for="Title_EN" class="form-control" />
+                <span asp-validation-for="Title_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_AR" class="control-label"></label>
+                <input asp-for="Title_AR" class="form-control" />
+                <span asp-validation-for="Title_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_EN" class="control-label"></label>
+                <input asp-for="Description_EN" class="form-control" />
+                <span asp-validation-for="Description_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_AR" class="control-label"></label>
+                <input asp-for="Description_AR" class="form-control" />
+                <span asp-validation-for="Description_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameLink" class="control-label"></label>
+                <input asp-for="GameLink" class="form-control" />
+                <span asp-validation-for="GameLink" class="text-danger"></span>
+            </div>
+
+            <div>
+                <img src="~/Path/CasualGames/Banners/@Model.BannerImageName" />
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="BannerImageName" class="control-label"></label>
+                <input asp-for="BannerImageName" class="form-control" />
+                <span asp-validation-for="BannerImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="bannerImageFile" class="control-label">Banner Image</label>
+                <input id="bannerImageFile" name="bannerImageFile" class="form-control" type="file" />
+                <span for="bannerImageFile" class="text-danger"></span>
+            </div>
+
+            <div>
+                <img src="~/Path/CasualGames/Thumbnails/@Model.ThumbnailImageName" />
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ThumbnailImageName" class="control-label"></label>
+                <input asp-for="ThumbnailImageName" class="form-control" />
+                <span asp-validation-for="ThumbnailImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="ThumbnailImageFile" class="control-label">Thumbnail Image</label>
+                <input id="ThumbnailrImageFile" name="ThumbnailImageFile" class="form-control" type="file" />
+                <span for="ThumbnailImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6" `>
+                <label asp-for="FileType" class="control-label"></label>
+                <select class="form-control" asp-for="FileType" asp-items="Html.GetEnumSelectList<FileTypeEnum>()">
+                    <option>Please Select File Type......</option>
+                </select>
+                <span asp-validation-for="FileType" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFreatured" /> @Html.DisplayNameFor(model => model.IsFreatured)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvidingBy" class="control-label"></label>
+                <input asp-for="ProvidingBy" class="form-control" />
+                <span asp-validation-for="ProvidingBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CasualCategoryId" class="control-label"></label>
+                <select asp-for="@Model.CasualCategoryId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.CasualCategories,"Id", "Name_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.CasualCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

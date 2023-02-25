@@ -1,0 +1,55 @@
+﻿@model GetVideoByIdVm
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+
+}
+
+@{
+    Layout = "_Layout";
+}
+@*<div class="col-12 mt-4 mb-2">
+    <a onclick="goBack()"><img class="rtl-svg" src="~/images/icons/leftarrow.svg" /></a>
+    Video Details
+</div>*@
+<main class="main-container">
+    <div class="mx-2 p-2 mb-3">
+        <video class="d-block w-100" height="163" controls preload="none" poster="~/Path/Videos/Images/@Model.ImageName">
+            <source type="video/mp4" src="~/Path/Videos/@Model.VideoFileName" />
+            <source type="video/webm" src="~/Path/Videos/@Model.VideoFileName" />
+            <source type="video/mp4" src="~/Path/Videos/@Model.VideoFileName" />
+            <source type="video/ogg" src="~/Path/Videos/@Model.VideoFileName" />
+            <source type='video/mp4; codecs="hvc1"' src="~/Path/Videos/@Model.VideoFileName">
+            <source type='video/mp4; codecs="avc1"' src="~/Path/Videos/@Model.VideoFileName">
+            Your browser does not support HTML5 video.
+        </video>
+        <span class="d-block fs-18 py-2">@(isEn ? Model.Title_EN : Model.Title_AR)</span>
+        <p class="d-block fs-16 color-text-primary-alt line-1-4">@(isEn ? Model.Description_EN : Model.Description_AR)</p>
+
+    </div>
+    <span class="d-block fs-18 RedHatDisplayMedium px-3 pb-3 color-text-primary-alt">@localizer["RelatedVideos"]</span>
+    <div class="row mx-0 px-2">
+        @await Html.PartialAsync("../Video/Related", @Model.RelatedVideosVms)
+    </div>
+
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                var event = "@ViewData["Event"]";
+                if (event != "") {
+                    console.log("#before");
+                    console.log(event);
+                    window.top.postMessage(
+                        {
+                            eventName: event,
+                        }
+                        , '*' /*replace * with the target origin*/);
+                    console.log("#after");
+                }
+            });
+
+        </script>
+    }
+</main>

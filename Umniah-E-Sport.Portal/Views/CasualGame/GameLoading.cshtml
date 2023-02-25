@@ -1,0 +1,51 @@
+﻿@model Umniah_E_Sport.Portal.Models.GetCasualGameByIdVm
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+
+@{
+    ViewData["Title"] = "Game Loading";
+    
+    var isEn = localizer["Lang"].Value == "en";
+}
+
+
+<!-- Start Container -->
+<div class="row no-gutters">
+    <!-- this grid view is temporarily for web view but it's designed mainly for mobile view -->
+    <div class="col-12 mx-auto">
+        <!-- stating main mobile design -->
+
+        <div class="loading-game my-5 d-flex justify-content-center align-items-center position-relative">
+            <div class="w-100">
+                <img src="@Model.ThumbnailImageName" alt="" class="d-block mx-auto b-12 w-100">
+                <p class="w-100 text-center my-2">Loading...</p>
+                <div class="d-block w-100 h-100">
+                    <div class="progress position-relative w-100" style="height: 20px;">
+                        <div id="bar" class="progress-bar w-25 color-primary-alt" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        setTimeout(() => {
+            $("#bar").removeClass("w-25");
+            $("#bar").addClass("w-50");
+            setTimeout(() => {
+                $("#bar").removeClass("w-50");
+                $("#bar").addClass("w-75");
+                setTimeout(() => {
+                    $("#bar").removeClass("w-75");
+                    $("#bar").addClass("w-100");
+                    setTimeout(() => {
+                        debugger;
+                        window.location.href = "@Model.GameLink"}, 500);
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    </script>
+}

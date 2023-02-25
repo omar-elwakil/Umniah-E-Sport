@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Umniah_E_Sport.Tool.Models.GetUserGamesByUserIdVm>
+
+@{
+    ViewData["Title"] = "UserGames";
+}
+
+<h1>UserGames</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameShortCode)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Title_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameImageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameShortCode)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

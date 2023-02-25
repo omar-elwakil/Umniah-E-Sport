@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Umniah_E_Sport.Tool.Models.GetAllTournamentTypesVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="example" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Text_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text_AR)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text_AR)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

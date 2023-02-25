@@ -1,0 +1,41 @@
+﻿@model Umniah_E_Sport.Tool.Models.GetCasualGameByIdVm
+<p>
+    Casual Game : @Model.Title_EN
+</p>
+<p>
+    <a asp-action="Create" asp-route-casualGameId="@Model.Id">Create New</a>
+</p>
+<table id="example" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CasualGameImagesVm.FirstOrDefault().ImageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CasualGameImagesVm) {
+        <tr>
+            <td>
+            <div style="height: 200px;">
+                <img class="h-100" src="~/Path/CasualGames/Images/@item.ImageName" />
+            </div>
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id ,casualGameId = @Model.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true">
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+    </script>
+}

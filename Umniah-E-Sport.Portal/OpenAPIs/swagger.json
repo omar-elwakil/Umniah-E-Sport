@@ -1,0 +1,2360 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Ooredoo-E-Sport.API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Arena/get-all-arenas": {
+      "get": {
+        "tags": [
+          "Arena"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArenaCardVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArenaCardVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArenaCardVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Game/get-all-games": {
+      "get": {
+        "tags": [
+          "Game"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllGamesVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllGamesVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllGamesVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Game/get-trending-games": {
+      "get": {
+        "tags": [
+          "Game"
+        ],
+        "parameters": [
+          {
+            "name": "TournamentsCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetTrendingGamesVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetTrendingGamesVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetTrendingGamesVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/News/get-all-news": {
+      "get": {
+        "tags": [
+          "News"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/News/get-latest-news": {
+      "get": {
+        "tags": [
+          "News"
+        ],
+        "parameters": [
+          {
+            "name": "NewsCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/News/get-news": {
+      "get": {
+        "tags": [
+          "News"
+        ],
+        "parameters": [
+          {
+            "name": "NewsId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsCardVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/get-otp": {
+      "post": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateOTPQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateOTPQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateOTPQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateOTPQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/subscribe-user": {
+      "post": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateOTPQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateOTPQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateOTPQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateOTPQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/user-achievements": {
+      "get": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "parameters": [
+          {
+            "name": "Msisdn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/unsubscribe-user": {
+      "post": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnsubscribeUserCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnsubscribeUserCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnsubscribeUserCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnsubscribeUserCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/update-user-name": {
+      "post": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserProfileCommand"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserProfileCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserProfileCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserProfileCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/get-user-profile": {
+      "get": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "parameters": [
+          {
+            "name": "MSISDN",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserProfileVM"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserProfileVM"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserProfileVM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Subscribtion/ranking-leader-boards": {
+      "get": {
+        "tags": [
+          "Subscribtion"
+        ],
+        "parameters": [
+          {
+            "name": "msisdn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rankCount",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-all-tournaments": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllTournamentsVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllTournamentsVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllTournamentsVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-feature-tournaments": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFeaturedTournamentsVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFeaturedTournamentsVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFeaturedTournamentsVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-upcoming-tournaments": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "MSISDN",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetUpcomingTournamentsVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetUpcomingTournamentsVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetUpcomingTournamentsVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-live-tournaments": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "msisdn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetLiveTournamentsVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetLiveTournamentsVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetLiveTournamentsVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-finished-tournaments": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "msisdn",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFinishedTournamentsVM"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFinishedTournamentsVM"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetFinishedTournamentsVM"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-tournament": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "tournamentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTournamentVM"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTournamentVM"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTournamentVM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Tournaments/get-terms-and-conditions": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "tournamentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTermsAndConditionsByTournamentVM"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTermsAndConditionsByTournamentVM"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTermsAndConditionsByTournamentVM"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Videos/all-videos": {
+      "get": {
+        "tags": [
+          "Videos"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Videos/related-videos": {
+      "get": {
+        "tags": [
+          "Videos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetRelatedVideosQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetRelatedVideosQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetRelatedVideosQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetRelatedVideosQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Videos/latest-videos": {
+      "get": {
+        "tags": [
+          "Videos"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Videos/video-details": {
+      "get": {
+        "tags": [
+          "Videos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideoByIdQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideoByIdQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideoByIdQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideoByIdQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Videos/videos-by-game": {
+      "get": {
+        "tags": [
+          "Videos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideosByGameQuery"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideosByGameQuery"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideosByGameQuery"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetVideosByGameQuery"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Achievement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "name_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Arena": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "name_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "tournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ArenaCardVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "name_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "countryName_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "numberOfTournaments": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Game": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "termsAndConditions": {
+            "$ref": "#/components/schemas/TermsAndConditions"
+          },
+          "termsAndConditionsId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            },
+            "nullable": true
+          },
+          "videos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Video"
+            },
+            "nullable": true
+          },
+          "userGames": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserGames"
+            },
+            "nullable": true
+          },
+          "news": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/News"
+            },
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GenerateOTPQuery": {
+        "type": "object",
+        "properties": {
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllGamesVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentTypeText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournamentTypeText_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numberOfMillisecond": {
+            "type": "number",
+            "format": "double"
+          },
+          "locationText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TournamentStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFeaturedTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentTypeText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournamentTypeText_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numberOfMillisecond": {
+            "type": "number",
+            "format": "double"
+          },
+          "locationText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TournamentStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetFinishedTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentTypeText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournamentTypeText_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numberOfMillisecond": {
+            "type": "number",
+            "format": "double"
+          },
+          "locationText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TournamentStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetLiveTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentTypeText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournamentTypeText_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numberOfMillisecond": {
+            "type": "number",
+            "format": "double"
+          },
+          "locationText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TournamentStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetRelatedVideosQuery": {
+        "type": "object",
+        "properties": {
+          "videoId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTermsAndConditionsByTournamentVM": {
+        "type": "object",
+        "properties": {
+          "content_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "content_AR": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTournamentLeaderboardVM": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ingameId": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTournamentVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentTypeText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournamentTypeText_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numberOfMillisecond": {
+            "type": "number",
+            "format": "double"
+          },
+          "locationText_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TournamentStatus"
+          },
+          "capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfRegistredPlayers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userTournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetTournamentLeaderboardVM"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTrendingGamesVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetUpcomingTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetUserProfileVM": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          },
+          "upcomingTournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserProfileTournamentsVM"
+            },
+            "nullable": true
+          },
+          "leaderBoard": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserProfileGameScoreVM"
+            },
+            "nullable": true
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetVideoByIdQuery": {
+        "type": "object",
+        "properties": {
+          "videoId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetVideosByGameQuery": {
+        "type": "object",
+        "properties": {
+          "gamedId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "text_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            },
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "News": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creationTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewsCardVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TermsAndConditions": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "content_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "content_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "endTimeStamp": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "creationTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimeSpan": {
+        "type": "object",
+        "properties": {
+          "ticks": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "days": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "milliseconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalDays": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalHours": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMilliseconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalMinutes": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "totalSeconds": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tournament": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "arena": {
+            "$ref": "#/components/schemas/Arena"
+          },
+          "arenaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bannerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournamentType": {
+            "$ref": "#/components/schemas/TournamentType"
+          },
+          "tournamentTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "locationId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prizeAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isFeatured": {
+            "type": "boolean"
+          },
+          "subscriptionFee": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creationTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "durationTimeSpan": {
+            "$ref": "#/components/schemas/TimeSpan"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "userTournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserTournaments"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TournamentStatus": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TournamentType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "text_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "text_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "tournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            },
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UnsubscribeUserCommand": {
+        "type": "object",
+        "properties": {
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserProfileCommand": {
+        "type": "object",
+        "properties": {
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creationTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "unsubscribeTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "subscribeTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isSubscribe": {
+            "type": "boolean"
+          },
+          "userTournaments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserTournaments"
+            },
+            "nullable": true
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Achievement"
+            },
+            "nullable": true
+          },
+          "userGames": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserGames"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserGames": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userScore": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileGameScoreVM": {
+        "type": "object",
+        "properties": {
+          "gameTitle_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "gameTitle_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "gameImageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileTournamentsVM": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "organizer_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizer_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserTournaments": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ingameId": {
+            "type": "string",
+            "nullable": true
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tournament": {
+            "$ref": "#/components/schemas/Tournament"
+          },
+          "tournamentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isTheFirst": {
+            "type": "boolean"
+          },
+          "isJoinSmsSent": {
+            "type": "boolean"
+          },
+          "isDailySmsSent": {
+            "type": "boolean"
+          },
+          "isHourlySmsSent": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidateOTPQuery": {
+        "type": "object",
+        "properties": {
+          "msisdn": {
+            "type": "string",
+            "nullable": true
+          },
+          "otp": {
+            "type": "string",
+            "nullable": true
+          },
+          "otpId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "gameId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "videoFileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "title_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_EN": {
+            "type": "string",
+            "nullable": true
+          },
+          "description_AR": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creationTimeStamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

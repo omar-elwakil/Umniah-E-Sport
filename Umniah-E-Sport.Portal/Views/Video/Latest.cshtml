@@ -1,0 +1,29 @@
+﻿@model IEnumerable<GetLatestVideosVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Umniah_E_Sport.Portal.Models
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+  
+}
+<div class="custom-scrolling-wrapper px-3 pb-5">
+    @foreach (var card in Model)
+    {
+        <!-- start repeatable div -->
+        <a asp-action="Details" asp-controller="Video" asp-route-videoId="@card.Id" class="row col-10 no-gutters p-3 justify-content-center mr-3">
+
+            <div class="col-12 d-flex flex-column">
+                <div class="game-poster">
+                    <img class="w-100" src="~/Path/Videos/Images/@card.ImageName" />
+                </div>
+                <div class="game-title ff-vf-bold fs-14 mt-3 white-spc-normal">
+                    @(isEn ? card.Title_EN : card.Title_AR)
+                </div>
+                <div class="fs-16 h-3 mt-2 white-spc-normal">
+                    @(isEn ? card.Description_EN : card.Description_AR)
+                </div>
+            </div>
+        </a>
+        <!-- end repeatable div -->
+    }
+</div>

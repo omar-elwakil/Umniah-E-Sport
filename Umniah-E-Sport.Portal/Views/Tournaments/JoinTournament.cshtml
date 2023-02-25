@@ -1,0 +1,256 @@
+﻿@model Umniah_E_Sport.Portal.Models.GetTournamentVM
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_Layout";
+}
+
+
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a onclick="goBack()">
+            <img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" />
+        </a>
+        Join Tournament
+    </div>
+</div>
+
+<main class="main-container px-3 d-flex flex-column mt-2">
+    <div class="fs-18 mt-2">Umniah Iraq</div>
+    <div class="fs-32 mt-2 ff-vf-bold line-1-1">
+        PUBG Mobile Tournament Season 01
+    </div>
+
+    <p>
+        Far far away, behind the word mountains, far from the countries
+        Vokalia and Consonantia, there live the blind texts. Separated they
+        live in Bookmarksgrove right at the coast of the Semantics, a large
+        language ocean.
+    </p>
+
+    <div class="tornament-details row no-gutters justify-content-between">
+        <div class="">
+            <div class="fs-16" style="color:#F9FF00">@localizer["WinnerPlayerPrize"]</div>
+            <span class="d-block fs-16">@Model.PrizeAmount @localizer["ILS"]</span>
+            @*<div class="ff-vf-bold fs-18">5000 EGP</div>*@
+        </div>
+        <div class="">
+            <div class="fs-16" style="color:#F9FF00">@localizer["TournamentLocation"]</div>
+            <span class="d-block fs-16">@(isEn ? Model.LocationText_EN : Model.LocationText_AR)</span>
+           
+        </div>
+    </div>
+
+    <div class="tornament-details mt-3">
+        <div class="fs-16" style="color:#F9FF00">@localizer["TournamentType"]</div>
+        <span class="d-block fs-16">@(isEn ? Model.TournamentTypeText_EN : Model.TournamentTypeText_AR)</span>
+       @* <div class="ff-vf-bold fs-18">Single player tournament</div>*@
+    </div>
+
+    <div class="tornament-details mt-3">
+        <div class="fs-16 text-secondary">@localizer["TournamentStartDate"]</div>
+        <span class="d-block fs-16">@Model.StartDate.ToString("dd MMM yyyy, hh:mm tt")</span>
+       @* <div class="ff-vf-bold fs-18">Saturday, 15 May 2021, 07:00 PM</div>*@
+    </div>
+
+    <div class="
+						tornament-details
+						row
+						no-gutters
+						justify-content-between
+						align-items-center
+						mt-3
+					">
+        <div class="col-12 fs-16 text-secondary">
+            Registered Players (96 / 100)
+        </div>
+
+        <div class="
+							col-12
+							row
+							no-gutters
+							justify-content-between
+							align-items-center
+						">
+            <div class="col-6 registered-players mt-1 d-flex">
+                <div class="imgs">
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                </div>
+                <div class="ff-vf-bold fs-18 mx-auto">@localizer["RegisteredPlayers"] (@Model.NumberOfRegistredPlayers / @Model.Capacity)</div>
+            </div>
+            <div class="fs-18 ff-vf-bold">@(Model.Capacity - Model.NumberOfRegistredPlayers) @localizer["PlacesAvailable"]</div>
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex flex-column">
+       @* <div class="join-teame-radio d-flex align-items-center">
+            <input class="normal radio-test mr-1" type="radio" name="teams" id="join-team" onchange="showJoinSection()" />
+            <label class="ff-vf-bold fs-18 line-1 m-0" for="join-team">
+                Join Team
+            </label>
+        </div>
+
+        <!-- <form id="join-form" action=""> -->
+        <div class="join-team d-none mt-2 mb-5">
+            <div class="text-secondary fs-16">* Team ID number</div>
+            <input class="w-100 bg-secondary br-dark px-2 py-1 text-white mt-1" type="text" required />
+        </div>
+        <!-- </form> -->
+
+        <div class="create-teame-radio d-flex align-items-center mt-3">
+            <input class="normal radio-test mr-1" type="radio" name="teams" id="create-team" onchange="showCreateSection()" />
+            <label class="ff-vf-bold fs-18 line-1 m-0" for="create-team">
+                Create Team
+            </label>
+        </div>
+
+        <!-- <form id="create-form" action=""> -->
+        <div class="create-team d-none mt-3">
+            <div class="text-secondary fs-16">* Team Name</div>
+            <input class="w-100 bg-secondary br-dark px-2 py-1 text-white mt-1" type="text" required />
+
+            <div class="text-secondary fs-16 mt-3">* Username in the game</div>
+            <input class="w-100 bg-secondary br-dark px-2 py-1 text-white mt-1" type="text" required />
+
+            <div class="text-secondary fs-16 mt-3">* User ID in the game</div>
+            <input class="w-100 bg-secondary br-dark px-2 py-1 text-white mt-1" type="text" required />
+
+            <input class="" type="file" name="" id="team-logo-input" required hidden />
+            <label class="
+								d-flex
+								align-items-center
+								justify-content-center
+								mt-4
+								w-45
+								bg-secondary
+								br-dark
+								team-logo-label
+							" for="team-logo-input">
+                <div class="text-secondary fs-14 line-1">*Add Logo</div>
+            </label>
+        </div>*@
+        <!-- </form> -->
+        <form asp-action="RegisterUserTournaments" class="pb-4 pt-3">
+            <input type="hidden" name="tournamentId" value="@Model.Id" />
+            <div class="fs-14 mt-4 px-3 mb-2">
+                @localizer["EnterName"]
+            </div>
+            <input id="user-name" class="form-control no-resize" type="text" name="UserName" maxlength="30" style="border: 1px solid #2CFCE8;" required />
+            <div class=" fs-14 mt-4 px-3 mb-2">
+                @localizer["EnterYourInGameId"]
+            </div>
+            <input id="game-id" class="form-control no-resize" type="text" name="IngameId" maxlength="30" required style="border: 1px solid #2CFCE8;" />
+            <button type="submit" class="mt-5 w-100 btn bg-highlight ff-vf-bold fs-18 text-primary br-0 p-2">
+                @localizer["JoinTournamentNow"]
+            </button>
+        </form>
+       
+    </div>
+</main>
+
+<script>
+    const createTeamRadio = document.querySelector("#create-team");
+    const createTeamInputs = document.querySelectorAll(".create-team input");
+
+    const joinTeamRadio = document.querySelector("#join-team");
+    const joinTeamInput = document.querySelector(".join-team input");
+
+    const fileInput = document.querySelector("#team-logo-input");
+
+    const submitBtn = document.querySelector("#submitBtn");
+    const allInputs = document.querySelectorAll("input");
+
+    function showJoinSection() {
+        if (joinTeamRadio.checked) {
+            document.querySelector(".join-team").classList.remove("d-none");
+            document.querySelector(".create-team").classList.add("d-none");
+
+            joinTeamInput.required = true;
+
+            createTeamInputs.forEach((input) => {
+                input.value = "";
+                input.required = false;
+            });
+
+            // submitBtn.setAttribute("form", "join-form");
+            submitBtn.disabled = true;
+        }
+    }
+
+    function showCreateSection() {
+        if (createTeamRadio.checked) {
+            document.querySelector(".create-team").classList.remove("d-none");
+            document.querySelector(".join-team").classList.add("d-none");
+
+            joinTeamInput.value = "";
+            joinTeamInput.required = false;
+
+            createTeamInputs.forEach((input) => {
+                input.required = true;
+            });
+
+            // submitBtn.setAttribute("form", "create-form");
+            submitBtn.disabled = true;
+        }
+    }
+
+    allInputs.forEach((input) => {
+        input.addEventListener("keyup", btnActive);
+    });
+
+    fileInput.addEventListener("change", btnActive);
+
+    function btnActive() {
+        if (joinTeamRadio.checked && joinTeamInput.value) {
+            submitBtn.disabled = false;
+        } else if (createTeamRadio.checked) {
+            let c = 0;
+            createTeamInputs.forEach((input) => {
+                if (input.value) {
+                    c++;
+                }
+            });
+            if (c == 4) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+
+            // console.log(c);
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    //upload photo code
+
+    fileInput.addEventListener("change", function (e) {
+        const file = this.files[0];
+        const label = document.querySelector(".team-logo-label");
+
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener("load", function (e) {
+                label.querySelector("div").classList.add("d-none");
+                label.style.background = `center / contain no-repeat url("${this.result}")`;
+            });
+            reader.readAsDataURL(this.files[0]);
+        } else {
+            label.querySelector("div").classList.remove("d-none");
+            label.style.background = null;
+        }
+    });
+</script>

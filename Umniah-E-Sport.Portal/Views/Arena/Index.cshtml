@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Umniah_E_Sport.Portal.Models.ArenaCardVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_Layout";
+}
+
+
+
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					" style="background-color :#454B50">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a asp-action="Index" asp-controller="Home">
+            <img class="rtl-svg mr-3 mx-2" src="./images/icons/leftarrow.svg" />
+        </a>
+        <span class="text-nowrap">
+            @localizer["Arenas"]
+        </span>
+    </div>
+    @*<div class="">
+        <img class="mr-5" src="./images/icons/filter.svg" alt="" />
+        <img class="" src="./images/icons/search.svg" alt="" />
+    </div>*@
+</div>
+
+<main class="main-container row no-gutters">
+     @foreach (var card in Model)
+    {
+    <!-- repeatable card -->
+    <a asp-action="Tournaments" asp-route-arenaId="@card.Id" id="@($"card_{card.Id}")">
+        <div class="arena-card col-12 row no-gutters p-3 mb-3 d-flex align-items-center" style="background-color:#2B2F33">
+        <div class="col-4">
+         <img class="w-100 object-fit-cover" src="~/Path/Arenas/Images/@card.ImageName" height="115" />
+        </div>
+
+        <div class="col-7 m-auto">
+            <div class="fs-16">Egypt</div>
+            <div class="fs-18 ff-vf-bold line-1-1">
+                QLASH EGYPT
+            </div>
+                    <div class="fs-16 my-2" style="color:#E0E43C">
+                <img class="mr-2" src="./images/icons/Mask Group 22.svg" alt="" />
+                @card.NumberOfTournaments @localizer["Tournaments"]
+            </div>
+        </div>
+    </div>
+    </a>
+    }
+    <!-- repeatable card -->
+
+    <div class="arena-card col-12 row no-gutters p-3 mb-3 " style="background-color:#2B2F33">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="./images/arena.png" height="120" />
+        </div>
+
+        <div class="col-7 m-auto">
+            <div class="fs-16">Egypt</div>
+            <div class="fs-18 ff-vf-bold line-1-1">
+                QLASH EGYPT
+            </div>
+            <div class="fs-16  my-2" style="color:#E0E43C">
+                <img class="mr-2" src="./images/icons/Mask Group 22.svg" alt="" />
+                97 Tournaments
+            </div>
+        </div>
+    </div>
+
+    <!-- repeatable card -->
+   @* <div class="arena-card col-12 row no-gutters p-3 mb-3 bg-secondary">
+        <div class="col-4">
+            <img class="w-100 object-fit-cover" src="./images/arena.png" height="120" />
+        </div>
+
+        <div class="col-7 m-auto">
+            <div class="fs-16">Egypt</div>
+            <div class="fs-18 ff-vf-bold line-1-1">
+                QLASH EGYPT
+            </div>
+            <div class="fs-16 text-secondary my-2">
+                <img class="mr-2" src="./images/icons/cup.svg" alt="" />
+                97 Tournaments
+            </div>
+        </div>
+    </div>*@
+
+</main>

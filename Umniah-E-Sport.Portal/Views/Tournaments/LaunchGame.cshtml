@@ -1,0 +1,184 @@
+﻿@model Umniah_E_Sport.Portal.Models.GetTournamentVM
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+}
+
+
+@{
+    Layout = "_Layout";
+}
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a onclick="goBack()">
+            <img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" />
+        </a>
+        @localizer["TournamentDetails"]
+    </div>
+</div>
+
+<main class="main-container px-3 d-flex flex-column mt-2">
+    <img class="w-100" src="~/Path/Tournaments/Banners/@Model.BannerName" />
+    <div class="fs-18 mt-2">Umniah</div>
+    <div class="fs-32 mt-2 ff-vf-bold line-1-1">
+        @(isEn ? Model.Description_EN : Model.Description_AR)
+    </div>
+
+    <p>
+        Far far away, behind the word mountains, far from the countries
+        Vokalia and Consonantia, there live the blind texts. Separated they
+        live in Bookmarksgrove right at the coast of the Semantics, a large
+        language ocean.
+    </p>
+
+    <div class="tornament-details row no-gutters justify-content-between">
+        <div class="">
+            <div class="fs-16 text-secondary">@localizer["WinnerPlayerPrize"]</div>
+            <div class="ff-vf-bold fs-18">@Model.PrizeAmount @localizer["ILS"]</div>
+        </div>
+        <div class="">
+            <div class="fs-16 text-secondary">@localizer["TournamentLocation"]</div>
+            <div class="ff-vf-bold fs-18">@(isEn ? Model.LocationText_EN : Model.LocationText_AR)</div>
+        </div>
+    </div>
+
+    <div class="tornament-details mt-3">
+        <div class="fs-16 text-secondary">@localizer["TournamentType"]</div>
+        <div class="ff-vf-bold fs-18">@(isEn ? Model.TournamentTypeText_EN : Model.TournamentTypeText_AR)</div>
+    </div>
+
+    <div class="tornament-details mt-3">
+        <div class="fs-16 text-secondary">@localizer["TournamentStartDate"]</div>
+        <div class="ff-vf-bold fs-18">@Model.StartDate.ToString("dd MMM yyyy, hh:mm tt")</div>
+    </div>
+
+    <div class="
+						tornament-details
+						row
+						no-gutters
+						justify-content-between
+						align-items-center
+						mt-3
+					">
+        <div class="col-12 fs-16 text-secondary">
+            @localizer["RegisteredPlayers"] (@Model.NumberOfRegistredPlayers / @Model.Capacity)
+        </div>
+
+        <div class="
+							col-12
+							row
+							no-gutters
+							justify-content-between
+							align-items-center
+						">
+            <div class="col-6 registered-players mt-1 d-flex">
+                <div class="imgs">
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                    <img class="player-pic mr-n3" src="~/images/profile.jpg" />
+                </div>
+                <div class="ff-vf-bold fs-18 mx-auto">+90</div>
+            </div>
+            <div class="fs-18 ff-vf-bold">@(Model.Capacity - Model.NumberOfRegistredPlayers) @localizer["PlacesAvailable"]</div>
+        </div>
+    </div>
+
+    <div class="mt-4 mx-auto w-90 d-flex flex-column align-items-center">
+        @*<div class="fs-16">Tournament Starts in</div>
+
+        <div class="timer d-flex justify-content-around w-85" data-time="1625622400">
+            <div class="d-flex flex-column align-items-center">
+                <div class="days line-1-1 ff-vf-bold fs-32 text-success">00</div>
+                <div class="fs-12">Days</div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="hours line-1-1 ff-vf-bold fs-32 text-success">00</div>
+                <div class="fs-12">Hours</div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="minutes line-1-1 ff-vf-bold fs-32 text-success">
+                    00
+                </div>
+                <div class="fs-12">Mins</div>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <div class="seconds line-1-1 ff-vf-bold fs-32 text-success">
+                    00
+                </div>
+                <div class="fs-12">Sec</div>
+            </div>
+        </div>*@
+
+        <button onclick=" window.open('@Model.DiscordLink','_blank')" class="
+							launch-btn
+							mt-3
+							w-100
+							btn
+							bg-highlight
+							ff-vf-bold
+							fs-18
+							text-primary
+							br-0
+							p-2
+						" disabled>
+            Launch Game now
+        </button>
+    </div>
+</main>
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            var event = "@ViewData["Event"]";
+            if (event != "") {
+
+
+                window.top.postMessage(
+                    {
+                        eventName: event,
+
+                    }
+                    , '*' /*replace * with the target origin*/);
+            }
+        });
+
+    </script>
+
+    <script>
+        const copyBtns = document.querySelectorAll(".copyBtn");
+        copyBtns.forEach((btn) => {
+            btn.addEventListener("click", copy);
+            btn.addEventListener("click", showMessage);
+
+        });
+
+        function copy(e) {
+            const body = document.querySelector("body");
+            const voucherString =
+                e.target.parentElement.parentElement.querySelector(".voucher-string");
+            const area = document.createElement("textarea");
+            body.appendChild(area);
+
+            area.value = voucherString.innerText;
+            area.select();
+            document.execCommand("copy");
+            body.removeChild(area);
+        }
+
+        function showMessage() {
+            const code = document.getElementById('tCode');
+            code.classList.remove('d-none');
+        }
+    </script>
+}

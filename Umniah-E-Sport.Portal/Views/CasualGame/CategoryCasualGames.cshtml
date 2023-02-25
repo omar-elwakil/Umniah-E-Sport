@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Umniah_E_Sport.Portal.Models.GetCasualGamesByCategoryIdVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    if (Model.Count() > 0)
+    {
+        ViewData["Title"] = isEn ? Model.FirstOrDefault().CasualCategoryName_EN : Model.FirstOrDefault().CasualCategoryName_AR + " Games";
+    }
+    else
+    {
+        ViewData["Title"] = isEn ? "Games" : "Games";
+    }
+}
+<section class="mt-5 px-3">
+    <!--Recently Added-->
+    <div class="fs-24 mb-4">@(Model.Count() > 0 ? (isEn ? Model.FirstOrDefault().CasualCategoryName_EN : Model.FirstOrDefault().CasualCategoryName_AR ) : "" ) Games</div>
+    <div class="row mx-3">
+        @if (Model.Count() > 0)
+        {
+            @foreach (var game in Model)
+            {
+                <div class="col-6 mb-3 px-2 text-center">
+                    <a asp-controller="CasualGame" asp-action="Index" asp-route-gameId="@game.Id" class="game-name-btn fs-14 f-ExtraBold">
+                        <img src="@game.ThumbnailImageName" alt="" class="w-100 b-12" style="height: 200px;">
+                        <span>@(isEn ? game.Title_EN : game.Title_AR)</span>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-center fs-16 w-100">No games available</p>
+        }
+    </div>
+</section>

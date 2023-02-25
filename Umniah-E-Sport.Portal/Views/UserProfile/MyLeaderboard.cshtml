@@ -1,0 +1,512 @@
+﻿@model List<MyLeaderBoardVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_layout";
+}
+
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a asp-action="Index" asp-controller="UserProfile">
+            <img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" />
+        </a>
+        <span class="text-nowrap">
+            @localizer["MyLeaderboard"]
+        </span>
+    </div>
+   @* <div class="">
+        <img class="" src="./images/icons/search.svg" alt="" />
+    </div>*@
+</div>
+
+<main class="main-container">
+    <ul class="
+						nav
+						lb-nav
+						mb-3
+						custom-scrolling-wrapper
+						justify-content-between
+						ff-vf-bold
+						fs-16
+					" id="lb-tabs" role="tablist">
+         @for (int i = 0; i < Model.Count; i++)
+        {
+        <li class="nav-item p-1" role="presentation">
+                <a class="nav-link p-1 active @(0 == i ? "active" : null)" id="game@(i+1)-tab" data-toggle="tab" data-target="#game@(i+1)" role="tab" aria-controls="game@(i+1)">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                        @(isEn ? Model[i].Title_EN : Model[i].Title_AR)
+                </div>
+            </a>
+        </li>
+        }
+       @* <li class="nav-item p-1" role="presentation">
+            <a class="nav-link p-1" id="game2-tab" data-toggle="pill" href="#game2" role="tab" aria-controls="game2" aria-selected="false">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                    <img class="w-100" src="./images/game2.png" alt="" />
+                </div>
+            </a>
+        </li>
+        <li class="nav-item p-1" role="presentation">
+            <a class="nav-link p-1" id="game3-tab" data-toggle="pill" href="#game3" role="tab" aria-controls="game3" aria-selected="false">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                    <img class="w-100" src="./images/game2.png" alt="" />
+                </div>
+            </a>
+        </li>
+        <li class="nav-item p-1" role="presentation">
+            <a class="nav-link p-1" id="game3-tab" data-toggle="pill" href="#game3" role="tab" aria-controls="game3" aria-selected="false">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                    <img class="w-100" src="./images/game2.png" alt="" />
+                </div>
+            </a>
+        </li>
+        <li class="nav-item p-1" role="presentation">
+            <a class="nav-link p-1" id="game3-tab" data-toggle="pill" href="#game3" role="tab" aria-controls="game3" aria-selected="false">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                    <img class="w-100" src="./images/game2.png" alt="" />
+                </div>
+            </a>
+        </li>
+        <li class="nav-item p-1" role="presentation">
+            <a class="nav-link p-1" id="game3-tab" data-toggle="pill" href="#game3" role="tab" aria-controls="game3" aria-selected="false">
+                <div class="rounded-circle overflow-hidden" style="width: 90px; height: 90px">
+                    <img class="w-100" src="./images/game2.png" alt="" />
+                </div>
+            </a>
+        </li>*@
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+       
+         @for (int i = 0; i < Model.Count; i++)
+           {
+            
+        <div class="tab-pane fade show  @(0 == i ? "active" : null)" id="game@(i+1)" role="tabpanel" aria-labelledby="game@(i+1)-tab">
+            <div class="top-3 mb-3 px-3 row no-gutters justify-content-between">
+               @if (Model[i].LeaderBoardRankDTOs.Count == 0)
+                {
+                    <p class="col-12 text-center mt-3">@localizer["Empty"]</p>
+                 }
+                @foreach (var userRank in Model[i].LeaderBoardRankDTOs)
+                {
+                <div class="
+									col
+									d-flex
+									flex-column
+									justify-content-end
+									align-items-center
+								">
+                    <div class="col d-flex align-items-center justify-content-aroundcol d-flex align-items-center justify-content-around">
+                        <img src="~/images/icons/second.png" alt="" />
+                        <img src="~/images/icons/first.png" alt="" />
+                        <img src="~/images/icons/third.png" alt="" />
+
+                    </div>
+                    <div class="fs-14 ff-vf-bold text-white text-center mt-2">
+                        @userRank.Name
+                    </div>
+                    <div class="fs-12 ff-vf-bold" style="color:#E0E43C">@userRank.Score @localizer["Points"]@userRank.Score @localizer["Points"]</div>
+                </div>
+                }
+                
+             
+              
+
+               @* <div class="
+									col
+									d-flex
+									flex-column
+									justify-content-end
+									align-items-center
+								">
+                    <div class="">
+                        <img src="./images/icons/first.png" alt="" />
+                    </div>
+                    <div class="fs-14 ff-vf-bold text-white text-center mt-2">
+                        MAGDY AHMED
+                    </div>
+                    <div class="fs-12 text-secondary ff-vf-bold">7,280 Points</div>
+                </div>
+
+                <div class="
+									col
+									d-flex
+									flex-column
+									justify-content-end
+									align-items-center
+								">
+                    <div class="">
+                        <img src="./images/icons/third.png" alt="" />
+                    </div>
+                    <div class="fs-14 ff-vf-bold text-white text-center mt-2">
+                        MAGDY AHMED
+                    </div>
+                    <div class="fs-12 text-secondary ff-vf-bold">7,280 Points</div>
+                </div>*@
+            </div>
+
+            <div class="ranked-players ff-vf-bold position-relative">
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                       
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- repeatable -->
+                <div class="
+									rank-card
+									row
+									no-gutters
+									bg-secondary
+									mb-2
+									fs-14
+									ff-vf-bold
+								">
+                    <div class="
+										col-2
+										py-3
+										d-flex
+										align-items-center
+										justify-content-center
+									">
+                        1
+                    </div>
+                    <div class="col-7 name d-flex align-items-center p-2">
+                        KHALED AHMED
+                    </div>
+                    <div class="col d-flex align-items-center text-secondary">
+                        5000 points
+                    </div>
+                </div>
+
+                <!-- ACTIVE CARD -->
+                <div class="pt-3 rank-card-active bg-primary">
+                    <div class="rank-card row no-gutters mb-2 fs-14 ff-vf-bold">
+                        <div class="
+											col-2
+											py-3
+											d-flex
+											align-items-center
+											justify-content-center
+										">
+                            1
+                        </div>
+                        <div class="col-7 name d-flex align-items-center p-2">
+                            KHALED AHMED
+                        </div>
+                        <div class="col d-flex align-items-center text-secondary">
+                            5000 points
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        <div class="tab-pane fade" id="game2" role="tabpanel" aria-labelledby="game2-tab">
+            ...
+        </div>
+        <div class="tab-pane fade" id="game3" role="tabpanel" aria-labelledby="game3-tab">
+            ...
+        </div>
+    </div>
+</main>

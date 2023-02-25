@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@localizer["Umniah play"]</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body class="row no-gutters preload">
+    <!-- this grid view is temporarily for web view but it's designed mainly for mobile view -->
+
+    <div class="mobile-view col-xl-4 col-lg-4 col-md-6 col-12 mx-auto position-relative">
+        <!-- stating main mobile design -->
+
+        <div class="app-land text-center px-3">
+            <div class="p-5">
+                <div class="pt-5">
+                    <img src="~/images/logo.png" />
+                </div>
+            </div>
+
+            <div class="">
+                <p class="fs-24 mt-5">
+                    @localizer["mainMessage-1"]
+                    <span class="text-highlight font-weight-bold">@localizer["mainMessage-2"]</span>
+                    @localizer["mainMessage-3"]
+                </p>
+            </div>
+
+            <div class="mt-5">
+
+                <a asp-action="Index" class="mt-5 mx-auto w-90 btn bg-highlight ff-vf-bold fs-18 text-primary br-0 px-3 p-2">@localizer["JoinNow"]</a>
+                <div class="fs-11 text-center mt-2 text-blue">
+                    @localizer["costMessage"]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.5.1.slim.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

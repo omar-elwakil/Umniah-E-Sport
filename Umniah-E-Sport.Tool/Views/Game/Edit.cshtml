@@ -1,0 +1,91 @@
+﻿@model Umniah_E_Sport.Tool.Models.GetGameVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>GetGameVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check" hidden>
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Success" /> @Html.DisplayNameFor(model => model.Success)
+                </label>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="ImageName" class="control-label">Old Image Name :</label>
+                <input asp-for="ImageName" class="form-control" readonly />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+                <div>
+                    <img src="~/Path/Games/Images/@Model.ImageName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imageFile" class="control-label">New Image : </label>
+                <input id="imageFile" name="imageFile" class="form-control" type="file" />
+                <span for="imageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title_EN" class="control-label"></label>
+                <input asp-for="Title_EN" class="form-control" />
+                <span asp-validation-for="Title_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_AR" class="control-label"></label>
+                <input asp-for="Title_AR" class="form-control" />
+                <span asp-validation-for="Title_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortCode" class="control-label"></label>
+                <input asp-for="ShortCode" class="form-control" />
+                <span asp-validation-for="ShortCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TermsAndConditionsContent_EN" class="control-label"></label>
+                <input asp-for="TermsAndConditionsContent_EN" class="form-control" />
+                <span asp-validation-for="TermsAndConditionsContent_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TermsAndConditionsContent_AR" class="control-label"></label>
+                <input asp-for="TermsAndConditionsContent_AR" class="form-control" />
+                <span asp-validation-for="TermsAndConditionsContent_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check" hidden>
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsExist" /> @Html.DisplayNameFor(model => model.IsExist)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

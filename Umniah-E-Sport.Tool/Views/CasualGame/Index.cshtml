@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Umniah_E_Sport.Tool.Models.GetAllCasualGamesVm>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="example" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameLink)
+            </th>
+    
+            <th>
+                @Html.DisplayNameFor(model => model.IsFreatured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvidingBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CasualCategoryId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFreatured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvidingBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CasualCategoryId)
+            </td>
+            <td>
+                @Html.ActionLink("Images", "Index","CasualGameImages", new { casualGameId =item.Id  }) |
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script asp-append-version="true">
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+    </script>
+}

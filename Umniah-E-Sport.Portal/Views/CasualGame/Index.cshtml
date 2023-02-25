@@ -1,0 +1,82 @@
+﻿@using Umniah_E_Sport.Domain.Enums
+@model Umniah_E_Sport.Domain.Entities.CasualGame
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    ViewData["Title"] = "Game";
+}
+@{
+}
+
+
+<div class="game-details mt-4">
+    @if (Model != null)
+    {
+        <div class="pb-3">
+            <div class="fs-24">@(isEn ? Model.Title_EN : Model.Title_AR)</div>
+
+            <div class="mb-4 mt-3">
+                <img src="@Model.BannerImageName" alt="" class="w-100">
+            </div>
+
+            <div>
+                <p class="f-medium fs-16">
+                    @(isEn ? Model.Description_EN : Model.Description_AR)
+                </p>
+            </div>
+
+            <!--Start Nav Links-->
+            <div class="scrolling-wrapper-menu align-items-center justify-content-between mt-4">
+                @if (Model.CasualGameImages != null && Model.CasualGameImages.Count > 0)
+                {
+                    foreach (var image in Model.CasualGameImages)
+                    {
+                        <div class="custom-nav-link position-relative">
+                            <img src="@image.ImageName" style="height: 200px;width: 200px;" alt="" class="br-12" />
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center fs-16">Images not available</p>
+                }
+            </div>
+            <!--End Nav Links-->
+        </div>
+
+        @if (Model.FileType == Umniah_E_Sport.Domain.Enums.FileTypeEnum.External)
+        {
+
+            <form asp-action="RedirectToGame" class="my-4" method="post">
+                <input type="hidden" name="gameId" value="@Model.Id" />
+                <button type="submit" class="py-2 mt-3 btn btn-block fs-18 text-white color-primary">
+                    Play now
+                </button>
+            </form>
+        }
+        else if (Model.FileType == Umniah_E_Sport.Domain.Enums.FileTypeEnum.APK)
+        {
+            <form asp-action="DownlaodGameFile" class="my-4" method="post">
+                <input type="hidden" name="gameId" value="@Model.Id" />
+                <button type="submit" class="py-2 mt-3 btn btn-block fs-18 text-white color-primary">
+                    Download now
+                </button>
+            </form>
+        }
+        @*        else if (Model.FileType == FileTypeEnum.Internal)
+            {
+
+            }
+            else
+            {
+
+            }*@
+    }
+    else
+    {
+        <p class="text-center fs-16">Game not found</p>
+    }
+</div>
+
+

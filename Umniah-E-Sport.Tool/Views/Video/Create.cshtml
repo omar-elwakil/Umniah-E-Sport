@@ -1,0 +1,91 @@
+﻿@model Umniah_E_Sport.Tool.Models.AddVideoToGameCommand
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AddVideoToGameCommand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="@Model.GameId" class="control-label"></label>
+                <select asp-for="@Model.GameId"
+                        class="form-control" required
+                        asp-items="@(new SelectList(@ViewBag.Games,"Id", "Title_EN"))">
+
+                    <option>Select Script...</option>
+                </select>
+                <span asp-validation-for="@Model.GameId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="ImageName" class="control-label"></label>
+                <input asp-for="ImageName" class="form-control" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile" class="control-label">Image : </label>
+                <input id="imageFile" name="imageFile" class="form-control" type="file" />
+                <span for="imageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="VideoFileName" class="control-label"></label>
+                <input asp-for="VideoFileName" class="form-control" />
+                <span asp-validation-for="VideoFileName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="videoFile" class="control-label">Video : </label>
+                <input id="videoFile" name="videoFile" class="form-control" type="file" />
+                <span for="videoFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title_EN" class="control-label"></label>
+                <input asp-for="Title_EN" class="form-control" />
+                <span asp-validation-for="Title_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_AR" class="control-label"></label>
+                <input asp-for="Title_AR" class="form-control" />
+                <span asp-validation-for="Title_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_EN" class="control-label"></label>
+                <input asp-for="Description_EN" class="form-control" />
+                <span asp-validation-for="Description_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description_AR" class="control-label"></label>
+                <input asp-for="Description_AR" class="form-control" />
+                <span asp-validation-for="Description_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="TimeStamp" class="control-label"></label>
+                <input asp-for="TimeStamp" class="form-control" />
+                <span asp-validation-for="TimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

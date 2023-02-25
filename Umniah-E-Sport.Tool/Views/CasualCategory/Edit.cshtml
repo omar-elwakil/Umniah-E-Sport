@@ -1,0 +1,46 @@
+﻿@model Umniah_E_Sport.Tool.Models.GetCasualCategoryVm
+
+<h4>Update Casual Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name_EN" class="control-label"></label>
+                <input asp-for="Name_EN" class="form-control" />
+                <span asp-validation-for="Name_EN" class="text-danger"></span>
+            </div>   
+            <div class="form-group">
+                <label asp-for="Name_AR" class="control-label"></label>
+                <input asp-for="Name_AR" class="form-control" />
+                <span asp-validation-for="Name_AR" class="text-danger"></span>
+            </div>   
+            <div>
+                <img src="~/Path/CasualCategory/Images/@Model.ImageName" />
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ImageName" class="control-label"></label>
+                <input asp-for="ImageName" class="form-control" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile" class="control-label"></label>
+                <input id="imageFile" name="imageFile" class="form-control" type="file" />
+                <span for="imageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

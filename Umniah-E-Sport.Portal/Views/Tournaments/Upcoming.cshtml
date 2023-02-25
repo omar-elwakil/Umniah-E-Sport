@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Umniah_E_Sport.Portal.Models.GetUpcomingTournamentsVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+     var isEn = localizer["Lang"].Value == "en";
+}
+
+<div class="page-content">
+    @foreach (var card in Model)
+    {
+
+        <a asp-action="LaunchGame" asp-route-tournamentId="@card.Id" id="@($"card_{ card.Id}")">
+            <div class="tornment-card col-12 px-2 row no-gutters mb-3">
+                <div class="col-4">
+                    <img class="w-100 object-fit-cover" src="~/Path/Tournaments/Images/@card.ImageName" height="214" />
+                </div>
+                <div class="col-7 mx-auto">
+                    <div class="fs-16 color-text-primary-alt mb-1">@localizer["Umniah"]</div>
+                    <div class="fs-16 RobotoMedium line-1-2 color-text-primary h-2" style="height: 40px;">
+                        @(isEn ? card.Title_EN : card.Title_AR)
+                    </div>
+                    <div class="fs-16 color-text-secondary my-1 h-1">
+                      <img class="mr-2" src="~/images/icons/cup.svg" alt="" />@card.PrizeAmount @localizer["ILS"]
+                    </div>
+                    <div class="fs-16 mt-1 color-text-primary">
+                        <img class="mr-2" src="~/images/icons/game.svg" alt="" />
+                        @(isEn ? card.TournamentTypeText_EN : card.TournamentTypeText_AR)
+                    </div>
+                    <div class="fs-16 mt-1 color-text-primary">
+                        <img class="mr-2" src="~/images/icons/clock.svg" alt="" />
+                        @card.StartDate.ToString("dd MMM yyyy, hh:mm tt")
+                    </div>
+                    <div class="fs-16 mt-1 color-text-primary">
+                        <img class="mr-2" src="~/images/icons/map.svg" alt="" />@(isEn ? card.LocationText_EN : card.LocationText_AR)
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>

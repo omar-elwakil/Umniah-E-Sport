@@ -1,0 +1,77 @@
+﻿@model Umniah_E_Sport.Tool.Models.AddGameCommand
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AddGameCommand</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title_EN" class="control-label"></label>
+                <input asp-for="Title_EN" class="form-control" />
+                <span asp-validation-for="Title_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title_AR" class="control-label"></label>
+                <input asp-for="Title_AR" class="form-control" />
+                <span asp-validation-for="Title_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ImageName" class="control-label"></label>
+                <input asp-for="ImageName" class="form-control" />
+                <span asp-validation-for="ImageName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="imageFile" class="control-label"></label>
+                <input id="imageFile" name="imageFile" class="form-control" type="file" />
+                <span for="imageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ShortCode" class="control-label"></label>
+                <input asp-for="ShortCode" class="form-control" />
+                <span asp-validation-for="ShortCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content_EN" class="control-label"></label>
+                <input asp-for="Content_EN" class="form-control" />
+                <span asp-validation-for="Content_EN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content_AR" class="control-label"></label>
+                <input asp-for="Content_AR" class="form-control" />
+                <span asp-validation-for="Content_AR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTimeStamp" class="control-label"></label>
+                <input asp-for="EndTimeStamp" class="form-control" type="date" />
+                <span asp-validation-for="EndTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreationTimeStamp" class="control-label"></label>
+                <input asp-for="CreationTimeStamp" class="form-control" type="datetime" />
+                <span asp-validation-for="CreationTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

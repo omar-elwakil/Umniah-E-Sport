@@ -1,0 +1,341 @@
+﻿@model GetUserProfileVM
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_layout";
+}
+
+
+
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+	<div class="fs-24 ff-vf-bold d-flex align-items-center">
+		<a asp-action="Index" asp-controller="Home">
+			<img class="rtl-svg mr-3 mx-2" src="~/images/icons/leftarrow.svg" />
+		</a>
+        <span class="text-nowrap">@localizer["MyProfile"]</span>
+	</div>
+</div>
+
+<main class="main-container d-flex flex-column no-gutters px-3 ff-vf-bold">
+    <div class="profile-link col-11 row no-gutters mx-auto align-items-center">
+        <div class="col-2 mr-3">
+            <img class="object-fit-cover mx-auto br-circle profile-pic" src="~/images/profile.jpg" width="65" height="65" />
+        </div>
+
+        <div class="user-name w-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <input type="text" class="form-control" name="Username" id="Username" value="@Model.Name" readonly>
+                <div class="fs-14 color-text-primary-alt num">@Model.Msisdn</div>
+                <a class="ml-2" id="editIcon">
+                    <img src="~/images/icons/editprofile.svg" alt="" />
+                </a>
+                <a class="ml-2" id="saveIcon">
+                    <img src="~/images/icons/check.svg" alt="" width="32" />
+                </a>
+              
+            </div>
+            
+        </div>
+
+        @*<div class="col-7 ml-2">
+            <div class="name fs-20">@Model.Name</div>
+            <div class="number fs-14 ff-vf-reg">@Model.Msisdn</div>
+        </div>
+        <a class="col-1 ml-auto">
+            <img src="~/images/icons/editprofile.svg" alt="" />
+        </a>*@
+    </div>
+
+    <section class="mt-4">
+        <div class="d-flex no-gutters justify-content-between">
+            <a asp-action="Achievement" class="bg-secondary d-flex align-items-center py-3 px-2 RobotoBold text-white fs-14 col">
+            <div class="
+								bg-secondary
+								d-flex
+								align-items-center
+								py-3
+								px-2
+								br-highlight
+								col
+							">
+                <img class="mr-2 mx-2" src="~/images/icons/achievment.png" alt="" />
+                <div class="">@localizer["MyAchievements"]</div>
+                
+            </div>
+            </a>
+            <div class="w-5"></div>
+
+           @* <a asp-action="MyLeaderboard" asp-controller="UserProfile" class="bg-secondary d-flex align-items-center py-3 px-2 RobotoBold text-white fs-14 col">
+            <div class="
+								bg-secondary
+								d-flex
+								align-items-center
+								py-3
+								px-2
+								br-highlight
+								col
+							">
+                <img class="mr-2 mx-2" src="~/images/icons/leaderboard.png" alt="" />
+                    <div class="">@localizer["MyLeaderboard"]</div>
+            </div>
+            </a>*@
+        </div>
+
+        <div class="d-flex no-gutters justify-content-between mt-4">
+            <a asp-controller="Tournaments" asp-action="MyTournaments" class="bg-secondary d-flex align-items-center py-3 px-2 RobotoBold text-white fs-14 col">
+            <div class="
+								bg-secondary
+								d-flex
+								align-items-center
+								py-3
+								px-2
+								br-highlight
+								col
+							">
+                <img class="mr-2 mx-2" src="~/images/icons/mytournaments.png" alt="" />
+                <div class="">@localizer["MyTournaments"]</div>
+            </div>
+            </a>
+            <div class="w-5"></div>
+           @* <div class="
+								bg-secondary
+								d-flex
+								align-items-center
+								py-3
+								px-2
+								br-highlight
+								col
+							">
+                <img class="mr-2" src="~/images/icons/myteams.png" alt="" />
+                <div class="">My Teams</div>
+            </div>*@
+        </div>
+    </section>
+
+    <section id="my-achievments" class="mt-4">
+        <div class="d-flex justify-content-between">
+            <div class="fs-24">@localizer["MyAchievements"]</div>
+            <a class="d-flex align-items-center">
+                <a asp-action="Achievement" class="d-flex align-items-center">
+                <img src="~/images/icons/rightarrow-w.svg" alt="" />
+                </a>
+            </a>
+        </div>
+
+        <div class="custom-scrolling-wrapper mt-3">
+          @foreach (var item in Model.Achievements)
+        {
+            <!-- start repeatable div -->
+            <div class="
+								row
+								col-5
+								no-gutters
+								bg-secondary
+								p-3
+								justify-content-center
+								mr-3
+							">
+                    <img class="col-5" src="~/Path/Badges/Images/82x90/@item.ImageName" alt="" />
+                <div class="col-12 mt-2 text-center ff-vf-reg">
+                  @(isEn ? item.Name_EN : item.Name_AR)
+                </div>
+        
+                
+
+            </div>
+        }
+        </div>
+    </section>
+
+   @* <section id="my-leaderboard" class="mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="fs-24">@localizer["MyLeaderboard"]</div>
+            <a class="d-flex align-items-center">
+                <img src="~/images/icons/rightarrow-w.svg" alt="" />
+            </a>
+        </div>
+
+        <div class="bg-secondary row no-gutters align-items-center p-2">
+            <img class="col-2 mr-2" src="./images/game2.png" />
+            <div class="col-8 h-2 fs-18 line-1-1">
+                Playerunknown’s Battlegrounds Mobile
+            </div>
+            <div class="col-1 ml-auto mr-1 d-flex flex-column align-items-center">
+                <img class="" src="./images/icons/medal.svg" alt="" />
+                <div class="fs-16 text-secondary">1500</div>
+            </div>
+        </div>
+    </section>*@
+
+    <section id="My-Tournaments" class="mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="fs-24">@localizer["MyTournaments"]</div>
+            <a class="d-flex align-items-center">
+                <a asp-controller="Tournaments" asp-action="MyTournaments" class="d-flex align-items-center">
+                <img src="~/images/icons/rightarrow-w.svg" alt="" />
+                </a>
+            </a>
+        </div>
+
+        <div class="tournament-timer-card row no-gutters p-3 bg-secondary">
+            
+        @foreach (var card in Model.UpcomingTournaments)
+        {
+            <div class="col-3 game-poster">
+                    <img class="w-100 h-100 object-fit-cover" src="~/images/game1.png/@card.ImageName" alt="" />
+            </div>
+            <a asp-controller="Tournaments" asp-action="LaunchGame" asp-route-tournamentId="@card.Id" id="@($"card_{card.Id}")" class="col ml-2">
+            <div class="col ml-3">
+                <div class="fs-16 ff-vf-reg mb-1">Umniah Iraq</div>
+                <div class="fs-18 ff-vf-bold line-1-1">
+                 @(isEn ? card.Title_EN : card.Title_AR)
+                </div>
+
+                        <div class="timer d-flex justify-content-between mt-2 w-75" data-time="@card.TimeStamp">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="days line-1-1 ff-vf-bold fs-32 text-secondary">
+                            00
+                        </div>
+                        <div class="fs-12">@localizer["Days"]</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="hours line-1-1 ff-vf-bold fs-32 text-secondary">
+                            00
+                        </div>
+                        <div class="fs-12">@localizer["Hours"]</div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="minutes line-1-1 ff-vf-bold fs-32 text-secondary">
+                            00
+                        </div>
+                        <div class="fs-12">@localizer["Mins"]</div>
+                    </div>
+                   @* <div class="d-flex flex-column align-items-center">
+                        <div class="seconds line-1-1 ff-vf-bold fs-32 text-secondary">
+                            00
+                        </div>
+                        <div class="fs-12">Sec</div>
+                    </div>*@
+                </div>
+            </div>
+            </a>
+            }
+        </div>
+    </section>
+
+   @* <section id="my-teams" class="mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="fs-24">My Teams</div>
+            <a class="d-flex align-items-center">
+                <img src="~/images/icons/rightarrow-w.svg" alt="" />
+            </a>
+        </div>
+
+        <div class="team-card p-3 bg-secondary">
+            <div class="row no-gutters align-items-center">
+                <img class="mr-2 br-circle br-secondary" src="~/images/game2.png" width="48" height="48" />
+                <div class="col-8">
+                    <div class="fs-18 line-1-1">Play Arena Stars</div>
+                    <div class="game-abrv fs-14 ff-vf-reg">PUBG</div>
+                </div>
+                <div class="col-1 ml-auto mr-1 d-flex flex-column align-items-center">
+                    <img class="" src="~/images/icons/medal.svg" alt="" />
+                    <div class="fs-16 text-secondary">1500</div>
+                </div>
+            </div>
+
+            <div class="row no-gutters justify-content-around mt-3">
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                        <img class="ml-n2" src="~/images/icons/star.svg" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">Ahmad</div>
+                </div>
+
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">@Model.Name</div>
+                </div>
+
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">Ahmad</div>
+                </div>
+
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">Ahmad</div>
+                </div>
+
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">Ahmad</div>
+                </div>
+
+                <!-- start repeatable div -->
+                <div class="player col-2 row no-gutters align-items-center">
+                    <div class="player-picture mx-auto">
+                        <img class="player-pic" src="~/images/profile.jpg" width="38" height="38" />
+                    </div>
+                    <div class="player-name fs-14 h-1 mx-auto">Ahmad</div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+</main>
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $('#editIcon').on('click', function () {
+            var userValue = $('#Username').val();
+
+            $('#Username').attr('readonly', false);
+            $('#Username').focus();
+            $('#editIcon').hide();
+            $('#saveIcon').show();
+
+        });
+
+        $('#saveIcon').on('click', function () {
+            var userValue = $('#Username').val();
+            console.log(userValue);
+            $('#editIcon').show();
+            $('#saveIcon').hide();
+            $('#Username').attr('readonly', true);
+            var ajaxUpdateNameUrl = "@Url.Action("UpdateNameByMsisdn")";
+            $.ajax({
+                type: 'POST',
+                url: ajaxUpdateNameUrl,
+                data: { name: userValue, Msisdn: "@Model.Msisdn" },
+                success: function (data) {
+                },
+                error: function (data) {
+                    $('#user-name-text').text(oldName);
+                }
+            });
+        });
+    </script>
+}

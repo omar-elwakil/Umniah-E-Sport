@@ -1,0 +1,14 @@
+﻿@model IEnumerable<GetTrendingGamesVM>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_layout";
+}
+
+@foreach (var game in Model)
+{
+    <a asp-controller="Products" asp-action="Index" asp-route-gameId=@game.Id class="col-3 p-1">
+        <img class="w-100" src="~/Path/Games/Images/@game.ImageName" style="border-radius: 20px;" />
+    </a>
+}

@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Upload";
+}
+
+
+<style>
+    .tableFixHeadCustomized {
+        overflow-y: auto;
+    }
+
+        .tableFixHeadCustomized thead th {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+</style>
+
+<div>
+    <div class="row mx-0">
+        <h1 class="col-md-12">Users Score</h1>
+        <h3 class="col-md-12">Table Example</h3>
+        <div class="table-responsive tableFixHeadCustomized">
+            <h5>Download Template from here <a style="color:blue" asp-action="DownloadList">Link</a></h5>
+            @* <p style="color:red;">Hint: SendDate Formate is (yyyy-mm-dd hh:mm:ss)</p>*@
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Msisdn
+                        </th>
+                        <th>
+                            DiscordLink
+                        </th>
+                        <th>
+                            UserScore
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>343424324235</td>
+                        <td>link://</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>564567856732</td>
+                        <td>link://</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>235353654775</td>
+                        <td>link://</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>465487987012</td>
+                        <td>5558</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+
+        <div>
+            <!--Start Form Inputs-->
+            <!-- Label Name -->
+            <h1 style="color:red;">@ViewBag.Message</h1>
+            <form asp-action="Index" method="post" enctype="multipart/form-data">
+                <div class="col-12 mx-auto box-shadow bg-white pb-4 mb-5 px-0">
+                    <div class="row mx-0 pt-3">
+                        <div class="form-group col-md-12">
+                            <div class="center">
+                                <label class="control-label">File.csv</label>
+                                <input class="form-control p-1 file-upload" type="file" name="uploadedFile" />
+                                <span name="uploadedFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100 text-center mt-3">
+                    <input class="btn btn-primary mb-3" type="submit" value="Upload" />
+                </div>
+
+            </form>
+            <!--End Form Inputs-->
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $("input[type='submit']").click(function () {
+            $("div.spanner").addClass("show");
+            $("div.overlay").addClass("show");
+        });
+    </script>
+}

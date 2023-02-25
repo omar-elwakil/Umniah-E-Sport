@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Umniah_E_Sport.Tool.Models.GetTournamentsByUserIdVm>
+
+@{
+    ViewData["Title"] = "UserTournaments";
+}
+
+<h1>UserTournaments</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BannerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organizer_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organizer_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrizeAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFeatured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubscriptionFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationTimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscordLink)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BannerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organizer_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organizer_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrizeAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFeatured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubscriptionFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationTimeStamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscordLink)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Umniah_E_Sport.Tool.Models.GetAllTournamentsVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="example" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Organizer_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organizer_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrizeAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TournamentTypeText_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TournamentTypeText_AR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterationStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterationEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DurationTimeSpan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubscriptionFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfMillisecond)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationText_EN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BannerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TournamentTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArenaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFeatured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiscordLink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organizer_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organizer_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrizeAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentTypeText_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentTypeText_AR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterationStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterationEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationTimeSpan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubscriptionFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfMillisecond)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationText_EN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BannerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArenaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFeatured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscordLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

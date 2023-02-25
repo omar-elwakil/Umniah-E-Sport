@@ -1,0 +1,59 @@
+﻿@model IEnumerable<GetUserAchievementsVm>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+@{
+    var isEn = localizer["Lang"].Value == "en";
+    Layout = "_Layout";
+}
+
+
+<div class="
+						col-12
+						mt-4
+						mb-2
+						d-flex
+						align-items-center
+						justify-content-between
+					">
+    <div class="fs-24 ff-vf-bold d-flex align-items-center">
+        <a asp-action="Index" asp-controller="UserProfile">
+            <img class="rtl-svg mr-3" src="~/images/icons/leftarrow.svg" />
+        </a>
+       @localizer["MyAchievements"]
+    </div>
+</div>
+@if (!Model.Any())
+{
+    <p class="mt-5 col-12 text-center mx-auto NoData">@localizer["NoData"]</p>
+}
+else{
+<main class=" achievement-grid px-3">
+    @foreach (var item in Model)
+    {
+    <!-- repeatable -->
+    <div class="row no-gutters bg-secondary p-3 justify-content-center">
+        <img class="col-5" src="./images/icons/achiev1.png/@item.ImageName" alt="" />
+        <div class="col-12 mt-2 text-center ff-vf-reg">@(isEn ? item.Name_EN : item.Name_AR)</div>
+    </div>
+    }
+    <!-- repeatable -->
+   @* <div class="row no-gutters bg-secondary p-3 justify-content-center">
+        <img class="col-5" src="./images/icons/achiev1.png" alt="" />
+        <div class="col-12 mt-2 text-center ff-vf-reg">Arena Champion</div>
+    </div>
+
+    <!-- repeatable -->
+    <div class="row no-gutters bg-secondary p-3 justify-content-center">
+        <img class="col-5" src="./images/icons/achiev1.png" alt="" />
+        <div class="col-12 mt-2 text-center ff-vf-reg">Arena Champion</div>
+    </div>
+
+    <!-- repeatable -->
+    <div class="row no-gutters bg-secondary p-3 justify-content-center">
+        <img class="col-5" src="./images/icons/achiev1.png" alt="" />
+        <div class="col-12 mt-2 text-center ff-vf-reg">Arena Champion</div>
+    </div>*@
+
+</main>
+}

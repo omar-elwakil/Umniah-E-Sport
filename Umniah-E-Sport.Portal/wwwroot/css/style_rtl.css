@@ -1,0 +1,19 @@
+*,
+body {
+	direction: rtl;
+}
+.rtl-svg {
+	transform: scaleX(-1);
+}
+.back-arrow-svg {
+	transform: scaleX(-1);
+}
+.side-menu {
+	transform: translate(200%, 0);
+	left: initial;
+	right: 0;
+	overflow-x: hidden;
+}
+.toggle-switch input:checked + svg {
+	transform: translate(-15px, 0);
+}
