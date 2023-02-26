@@ -29,12 +29,12 @@ namespace Umniah_E_Sport.Portal.Controllers
             return View(await _swaggerClient.GetFeatureTournamentsAsync());
         }
 
-        public async Task<IActionResult> Details(int tournamentId =2002)
+        public async Task<IActionResult> Details(int tournamentId )
         {
             try
             {
-                //string email = _cookieManager.GetUserEmail();
-                string email = "SmartLinkTest";
+                string email = _cookieManager.GetUserEmail();
+                
                 if (email != null)
                 {
                     var response = await _swaggerClient.IsUserAlreadyJoinTournamentAsync(email, tournamentId);
